@@ -22,8 +22,22 @@ spec:
         image: kesavakadiyala/frontend:VERSION
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: 500Mi
+            cpu: 250m
+          requests:
+            memory: 500Mi
+            cpu: 250m
         ports:
         - containerPort: 80
-          hostPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
