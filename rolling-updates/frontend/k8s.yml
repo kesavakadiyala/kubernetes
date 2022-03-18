@@ -6,6 +6,7 @@ metadata:
     app: frontend
     project: roboshop
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -25,3 +26,4 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 80
+          hostPort: 80
