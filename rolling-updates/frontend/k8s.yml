@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+    project: roboshop
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+      project: roboshop
+  template:
+    metadata:
+      labels:
+        app: frontend
+        project: roboshop
+    spec:
+      containers:
+      - name: nginx
+        image: kesavakadiyala/frontend:VERSION
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
